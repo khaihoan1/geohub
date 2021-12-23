@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'service',
     'rest_framework',
     'django_filters',
+    'revision',
 ]
 
 MIDDLEWARE = [

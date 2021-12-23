@@ -4,9 +4,10 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 from service.models import Service
 from service.serializers.service_serializer import ServiceSerializer
+from .tracking_mixin import TrackingMixinView
 
 
-class ServiceViewSet(viewsets.ModelViewSet):
+class ServiceViewSet(TrackingMixinView, viewsets.ModelViewSet):
     serializer_class = ServiceSerializer
     queryset = Service.objects.all()
     search_fields = ('name',)

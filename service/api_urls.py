@@ -1,6 +1,6 @@
 from rest_framework.routers import SimpleRouter
 
-from service.views import ServiceViewSet
+from service.view.views import ServiceViewSet
 
 router = SimpleRouter(trailing_slash=False)
 

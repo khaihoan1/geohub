@@ -103,7 +103,7 @@ ENV/
 
 # this project
 .idea/
-db.sqlite3
+# db.sqlite3
 /static/
 test-reports/
 media/

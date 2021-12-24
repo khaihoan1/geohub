@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.filters import SearchFilter, OrderingFilter
 
 from service.service_filter import ServiceFilter
-from service.models import Service, OsPlatform
+from service.models import Service
 from service.serializers.service_serializer import ServiceSerializer
 from .tracking_mixin import TrackingMixinView
 

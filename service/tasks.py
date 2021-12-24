@@ -12,19 +12,20 @@ class Actions(Enum):
     FILTER = 'F'
 
 
-def get_tracking_data(request):
-    data = request.query_params
+def get_action(data):
     if 'search' in data:
-        return data, Actions.SEARCH.value
-    return data, Actions.FILTER.value
+        return Actions.SEARCH.value
+    return Actions.FILTER.value
 
 
 @shared_task
-def track_task(request, *args, **kwargs):
+def track_task(data, *args, **kwargs):
     pk = kwargs.get('pk')
-    if pk:
-        if Service.objects.filter(pk=pk).exists():
-            data, action = {'pk': int(pk)}, Actions.VIEW.value
+    if pk and Service.objects.filter(pk=pk).exists():
+        data = {'pk': int(pk)}
+        action = Actions.VIEW.value
+    elif data:
+        action = get_action(data)
     else:
-        data, action = get_tracking_data(request)
+        return
     Revision.objects.create(action=action, data=data)

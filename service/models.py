@@ -30,3 +30,7 @@ class Service(models.Model):
         indexes = [
             models.Index(fields=['name'])
         ]
+
+    @property
+    def has_free_os(self):
+        return OsPlatform.objects.filter(is_free=True).filter(services=self).exists()

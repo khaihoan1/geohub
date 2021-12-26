@@ -17,7 +17,7 @@ After clone this repo
 - Install dependent packages: <code>pip install -r requirements.txt</code>
 - Run Redis as Celery's task queue with <code>docker-compose up -d</code>
 - You need to run Celery for tracking task: <code> celery -A geohub worker -l INFO</code>
-- Run the web server: <code>python manage.py runserver</code>
+- Run the web server: <code>python manage.py runserver</code>, the webapp should be running on localhost with port 8000
 
 ## Example
 
@@ -153,4 +153,4 @@ Also support filter by category, support free OS or not, filter by name,...
 
 # User behavior tracking
 
-User activities such as view a specific service, searching, filtering will be saved into <code>revision_revision</code> table, by running task with Celery.
+User activities such as viewing a specific service, searching, filtering will be saved into <code>revision_revision</code> table, by running task with Celery.
